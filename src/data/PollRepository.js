@@ -6,7 +6,7 @@ class PollRepository {
         var series = [];
         
         for(const poll of polls) {
-            const { date, institute, results } = poll;
+            const { date, results } = poll;
 
             for(const candidateResult of results) {
                 const { candidateId, value } = candidateResult;
