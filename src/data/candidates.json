@@ -1,0 +1,67 @@
+[
+    {
+        "id": 10,
+        "name": "Celso Russomanno",
+        "party": "Republicanos",
+        "color": "#0066CC"
+    },
+    {
+        "id": 40,
+        "name": "Marcio França",
+        "party": "PSB",
+        "color": "#ffc000"
+    },
+    {
+        "id": 45,
+        "name": "Bruno Covas",
+        "party": "PSDB",
+        "color": "blue"
+    },
+    {
+        "id": 17,
+        "name": "Joice Hasselman",
+        "party": "PSL",
+        "color": "green"
+    },
+    {
+        "id": 50,
+        "name": "Guilherme Boulos",
+        "party": "PSOL",
+        "color": "purple"
+    },
+    {
+        "id": 55,
+        "name": "Andrea Matarazzo",
+        "party": "PSD",
+        "color": "#FFA500"
+    },
+    {
+        "id": 13,
+        "name": "Jilmar Tatto",
+        "party": "PT",
+        "color": "#c4122d"
+    },
+    {
+        "id": 51,
+        "name": "Arthur do Val",
+        "party": "Patriota",
+        "color": "#CCAA00"
+    },
+    {
+        "id": 30,
+        "name": "Filipe Sabará",
+        "party": "Novo",
+        "color": "#FF4D00"
+    },
+    {
+        "id": 99,
+        "name": "Outros",
+        "party": null
+    },
+    {
+        "id": null,
+        "name": "Indecisos",
+        "party": null,
+        "color": "#DDD"
+    }
+]

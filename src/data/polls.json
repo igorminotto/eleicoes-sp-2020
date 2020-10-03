@@ -1,0 +1,104 @@
+[
+    {
+        "id": 1,
+        "date": "2020-09-20",
+        "institute": "Ibope",
+        "results": [
+            {
+                "candidateId": 10,
+                "value": 0.24
+            },
+            {
+                "candidateId": 40,
+                "value": 0.06
+            },
+            {
+                "candidateId": 45,
+                "value": 0.18
+            },
+            {
+                "candidateId": 17,
+                "value": 0.02
+            },
+            {
+                "candidateId": 50,
+                "value": 0.08
+            },
+            {
+                "candidateId": 55,
+                "value": 0.01
+            },
+            {
+                "candidateId": 13,
+                "value": 0.01
+            },
+            {
+                "candidateId": 51,
+                "value": 0.02
+            },
+            {
+                "candidateId": 30,
+                "value": 0.01
+            },
+            {
+                "candidateId": 99,
+                "value": 0.04
+            },
+            {
+                "candidateId": null,
+                "value": 0.33
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "date": "2020-09-22",
+        "institute": "Datafolha",
+        "results": [
+            {
+                "candidateId": 10,
+                "value": 0.29
+            },
+            {
+                "candidateId": 40,
+                "value": 0.08
+            },
+            {
+                "candidateId": 45,
+                "value": 0.20
+            },
+            {
+                "candidateId": 17,
+                "value": 0.01
+            },
+            {
+                "candidateId": 50,
+                "value": 0.09
+            },
+            {
+                "candidateId": 55,
+                "value": 0.02
+            },
+            {
+                "candidateId": 13,
+                "value": 0.02
+            },
+            {
+                "candidateId": 51,
+                "value": 0.02
+            },
+            {
+                "candidateId": 30,
+                "value": 0.01
+            },
+            {
+                "candidateId": 99,
+                "value": 0.05
+            },
+            {
+                "candidateId": null,
+                "value": 0.21
+            }
+        ]
+    }
+]
