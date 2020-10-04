@@ -1,17 +1,9 @@
 import React from 'react';
-import PollRepository from '../data/PollRepository';
-import { LineGraph } from '../graphs/LineGraph';
+import { RechartLineChart } from '../charts/LineChart';
 import './App.css';
 
-function App() {
-  const pollRepository = new PollRepository();
-  const pollsLinearData = pollRepository.getLinearData();
-  console.log(pollsLinearData); 
-  return (
-    <div className="App" style={{height: 500 }}>
-      <LineGraph data={pollsLinearData}/>
-    </div>
-  );
-}
+const App = () => <div className="App">
+  <RechartLineChart />
+</div>;
 
 export default App;

@@ -44,7 +44,7 @@
     {
         "id": 51,
         "name": "Arthur do Val",
-        "party": "Patriota",
+        "party": "Patriotas",
         "color": "#CCAA00"
     },
     {
@@ -56,7 +56,8 @@
     {
         "id": 99,
         "name": "Outros",
-        "party": null
+        "party": null,
+        "color": "#AAA"
     },
     {
         "id": null,

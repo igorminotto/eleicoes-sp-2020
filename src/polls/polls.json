@@ -6,47 +6,47 @@
         "results": [
             {
                 "candidateId": 10,
-                "value": 0.24
+                "value": 24
             },
             {
                 "candidateId": 40,
-                "value": 0.06
+                "value": 6
             },
             {
                 "candidateId": 45,
-                "value": 0.18
+                "value": 18
             },
             {
                 "candidateId": 17,
-                "value": 0.02
+                "value": 2
             },
             {
                 "candidateId": 50,
-                "value": 0.08
+                "value": 8
             },
             {
                 "candidateId": 55,
-                "value": 0.01
+                "value": 1
             },
             {
                 "candidateId": 13,
-                "value": 0.01
+                "value": 1
             },
             {
                 "candidateId": 51,
-                "value": 0.02
+                "value": 2
             },
             {
                 "candidateId": 30,
-                "value": 0.01
+                "value": 1
             },
             {
                 "candidateId": 99,
-                "value": 0.04
+                "value": 4
             },
             {
                 "candidateId": null,
-                "value": 0.33
+                "value": 33
             }
         ]
     },
@@ -57,47 +57,47 @@
         "results": [
             {
                 "candidateId": 10,
-                "value": 0.29
+                "value": 29
             },
             {
                 "candidateId": 40,
-                "value": 0.08
+                "value": 8
             },
             {
                 "candidateId": 45,
-                "value": 0.20
+                "value": 20
             },
             {
                 "candidateId": 17,
-                "value": 0.01
+                "value": 1
             },
             {
                 "candidateId": 50,
-                "value": 0.09
+                "value": 9
             },
             {
                 "candidateId": 55,
-                "value": 0.02
+                "value": 2
             },
             {
                 "candidateId": 13,
-                "value": 0.02
+                "value": 2
             },
             {
                 "candidateId": 51,
-                "value": 0.02
+                "value": 2
             },
             {
                 "candidateId": 30,
-                "value": 0.01
+                "value": 1
             },
             {
                 "candidateId": 99,
-                "value": 0.05
+                "value": 5
             },
             {
                 "candidateId": null,
-                "value": 0.21
+                "value": 21
             }
         ]
     }
