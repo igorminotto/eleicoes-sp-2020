@@ -9,8 +9,10 @@ const App = () => {
     <Container>
       <h1 className="margin-bottom">Eleições São Paulo 2020</h1>
       <RechartLineChart />
-      <small>Fonte: <a href={source}>{source}</a></small>
     </Container>
+    <small>Fonte: <a href={source}>https://pt.wikipedia.org</a></small>
+    <br/>
+    <small>Feito por <a href="https://www.linkedin.com/in/igorminotto/">Igor Minotto</a></small>
   </div>;
 }
 

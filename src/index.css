@@ -6,15 +6,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
   margin: 0px;
 }
 
 small, small a {
-  color: #CCC;
+  color: #BBB;
   font-size: 8pt;
 }
 
