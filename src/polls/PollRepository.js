@@ -10,7 +10,7 @@ class PollRepository {
 
     getPollsData() {
         return this.polls.map(poll => {
-            var pollData = { date: poll.timestamp, institute: poll.institute };
+            var pollData = { date: poll.timestamp, name: poll.institute, institute: poll.institute };
 
             for (var { candidateId, value } of poll.results) {
                 pollData[candidateId] = value;
