@@ -14,10 +14,14 @@ export default class CandidateRepository {
         var candidates = this.candidates;
 
         candidates.sort((a, b) => {
-            if (a.name === "Indecisos") return 100;
-            if (a.name === "Outros") return 99;
-
-            return poll.getResultOfCandidate(b.id) - poll.getResultOfCandidate(a.id);
+            switch(a.name) {
+                case "Indecisos":
+                    return 100;
+                case "Outros":
+                    return 99;
+                default:
+                    return poll.getResultOfCandidate(b.id) - poll.getResultOfCandidate(a.id);
+            }
         });
 
         return candidates;

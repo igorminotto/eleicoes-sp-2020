@@ -6,7 +6,7 @@ export default class Candidate {
         this.color = color;
     }
 
-    get key() { 
+    get description() { 
         return this.name + (this.party ? ` (${this.party})` : "");
     }
 }

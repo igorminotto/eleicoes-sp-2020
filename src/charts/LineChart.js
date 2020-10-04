@@ -11,20 +11,24 @@ export const RechartLineChart = () => {
 
     console.log(data, candidates);
 
-    return <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+    return <LineChart data={data} width={900} height={600} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
         {candidates.map(candidate => <Line 
             type="monotone" 
+            key={candidate.id}
             dataKey={candidate.id} 
-            name={candidate.key} 
+            name={candidate.description} 
             stroke={candidate.color}
             dot={{ stroke: candidate.color, strokeWidth: 1 }} />)}
-
-        <CartesianGrid stroke="#ddd" strokeDasharray="2 2" />
-        <XAxis type="number" 
+        <CartesianGrid 
+            stroke="#ddd" 
+            strokeDasharray="2 2" />
+        <XAxis 
+            type="number" 
             dataKey="date"
             tickFormatter={formatDate}
             domain={electionRaceDomain.map(d => d.getTime())} />
-        <YAxis domain={[0, 35]}/>
+        <YAxis 
+            domain={[0, 35]} />
         <Tooltip />
         <Legend />
     </LineChart>

@@ -60,7 +60,7 @@
         "color": "#AAA"
     },
     {
-        "id": null,
+        "id": 100,
         "name": "Indecisos",
         "party": null,
         "color": "#DDD"
