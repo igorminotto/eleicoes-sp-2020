@@ -4,7 +4,7 @@ import Link from '../components/Link';
 const Footer = () => {
     const source = "https://pt.wikipedia.org/wiki/Elei%C3%A7%C3%A3o_municipal_de_S%C3%A3o_Paulo_em_2020";
 
-    return <div className="Footer">
+    return <div className="Footer" style={{ paddingBottom: 50 }}>
         <small>
             Fonte: <Link href={source} newWindow={true}>https://pt.wikipedia.org</Link>
         </small>

@@ -15,7 +15,7 @@ class PollRepository {
             institute: poll.institute 
         };
 
-        for (var { candidateId, value } of poll.results) {
+        for (var [candidateId, value] of poll.results) {
             pollData[candidateId] = value;
         }
 

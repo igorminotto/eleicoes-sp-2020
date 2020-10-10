@@ -9,12 +9,10 @@ export const RechartLineChart = () => {
 
     const formatDate = (timestamp) => new Date(timestamp).toLocaleDateString();
 
-    console.log(data, candidates);
-
-    return <ResponsiveContainer width="100%" height={500} >
+    return <ResponsiveContainer width="100%" height={800} >
         <LineChart data={data} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
             {candidates.map(candidate => <Line 
-                type="monotone" 
+                type="linear" 
                 key={candidate.id}
                 dataKey={candidate.id} 
                 name={candidate.description} 

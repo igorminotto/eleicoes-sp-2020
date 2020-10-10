@@ -54,6 +54,36 @@
         "color": "#FF4D00"
     },
     {
+        "id": 16,
+        "name": "Vera Lúcia",
+        "party": "PSTU",
+        "color": "#700000"
+    },
+    {
+        "id": 65,
+        "name": "Orlando Silva",
+        "party": "PCdoB",
+        "color": "#DA251C"
+    },
+    {
+        "id": 29,
+        "name": "Antonio Carlos Silva",
+        "party": "PCO",
+        "color": "#9F030A"
+    },
+    {
+        "id": 28,
+        "name": "Levy Fidelix",
+        "party": "PRTB",
+        "color": "#1c1b52"
+    },
+    {
+        "id": 18,
+        "name": "Marina Helou",
+        "party": "REDE",
+        "color": "#48D1CC"
+    },
+    {
         "id": 99,
         "name": "Outros",
         "party": null,

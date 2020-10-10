@@ -11,6 +11,6 @@ export default class Poll {
     }
 
     getResultOfCandidate(candidateId) {
-        return this.results.find(r => r.candidateId === candidateId).value;
+        return this.results.find(r => r[0] === candidateId)[1];
     }
 }
