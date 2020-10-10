@@ -24,7 +24,7 @@ export const RechartLineChart = ({ width }) => {
             stroke="#ddd" 
             strokeDasharray="2 2" />
         <XAxis 
-            type="number" 
+            type="category" 
             dataKey="date"
             tickFormatter={formatDate}
             domain={electionRaceDomain.map(d => d.getTime())} />
