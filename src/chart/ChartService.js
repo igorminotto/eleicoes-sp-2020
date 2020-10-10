@@ -15,7 +15,7 @@ export default class ChartService {
         return {
             election,
             candidates: this.candidateRepository.sortCandidatesByPollResults(lastPoll),
-            data: this.pollRepository.getPollsData(election)
+            pollsData: this.pollRepository.getPollsData(election)
         };
     }
 }

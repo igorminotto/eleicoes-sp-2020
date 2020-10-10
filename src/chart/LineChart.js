@@ -3,12 +3,11 @@ import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'r
 import ChartService from './ChartService';
 import { isIOS } from '../utils/platformUtils';
 
-export const RechartLineChart = ({ width }) => {
+export const RechartLineChart = ({ width, height = 500 }) => {
     const chartService = new ChartService();
-    const { election, candidates, data } = chartService.getData();
-    const size = [width, 500];
-    const resizeLimit = 800;
-    const useDateAxis = !isIOS();
+    const { election, candidates, pollsData } = chartService.getData();
+    const isSmallChart = width < 800;
+    const useDateAxis = !isIOS() && !isSmallChart;
 
     const formatDate = (daysToElection) => {
         const d = new Date(election.date);
@@ -16,7 +15,7 @@ export const RechartLineChart = ({ width }) => {
         return d.toLocaleDateString();
     };
 
-    return <LineChart data={data} width={size[0]} height={size[1]} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
+    return <LineChart data={pollsData} width={width} height={height} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => <Line 
             type="linear" 
             key={candidate.id}
@@ -37,13 +36,15 @@ export const RechartLineChart = ({ width }) => {
         <YAxis 
             domain={[0, 35]} />
         <Tooltip
-            labelFormatter={daysToElection => formatDate(daysToElection)}
-            formatter={p => `${p}%`}/>
+            labelFormatter={daysToElection => formatDate(daysToElection) 
+                + " | " 
+                + pollsData.find(p => p.daysToElection === daysToElection).name}
+            formatter={value => `${value}%`}/>
         <Legend 
-            align={width < resizeLimit ? "left" : "right"}
-            verticalAlign={width < resizeLimit ? "bottom" : "top"}
+            align={isSmallChart ? "left" : "right"}
+            verticalAlign={isSmallChart ? "bottom" : "top"}
             iconType="circle"
             wrapperStyle={{ paddingLeft: 20 }}
-            layout={width < resizeLimit ? "horizontal" : "vertical"} />
+            layout={isSmallChart ? "horizontal" : "vertical"} />
     </LineChart>;
 };
