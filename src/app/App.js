@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { RechartLineChart } from '../charts/LineChart';
+import { RechartLineChart } from '../chart/LineChart';
 import Container from '../components/Container';
 import Footer from './Footer';
 

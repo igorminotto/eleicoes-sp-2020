@@ -1,5 +1,6 @@
-import CandidateRepository from "../candidates/CandidateRepository"
-import PollRepository from "../polls/PollRepository";
+import CandidateRepository from "../candidate/CandidateRepository"
+import Election from "../election/Election";
+import PollRepository from "../poll/PollRepository";
 
 export default class ChartService {
     constructor() {
@@ -8,11 +9,13 @@ export default class ChartService {
     }
 
     getData() {
+        var election = Election.getDefault();
         var lastPoll = this.pollRepository.getLastPoll();
 
         return {
+            election,
             candidates: this.candidateRepository.sortCandidatesByPollResults(lastPoll),
-            data: this.pollRepository.getPollsData()
+            data: this.pollRepository.getPollsData(election)
         };
     }
 }

@@ -8,14 +8,13 @@ class PollRepository {
 
     getLastPoll = () => this.polls[this.polls.length - 1];
 
-    getPollsData = () => this.polls.map(poll => {
+    getPollsData = (election) => this.polls.map(poll => {
         var pollData = { 
-            daysToElection: poll.daysToElection, 
-            name: poll.institute, 
-            institute: poll.institute 
+            name: poll.institute,
+            daysToElection: poll.daysTo(election.date), 
         };
 
-        for (var [candidateId, value] of poll.results) {
+        for (var { candidateId, value } of poll.results) {
             pollData[candidateId] = value;
         }
 

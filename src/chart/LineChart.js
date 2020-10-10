@@ -5,14 +5,13 @@ import { isIOS } from '../utils/platformUtils';
 
 export const RechartLineChart = ({ width }) => {
     const chartService = new ChartService();
-    const { data, candidates } = chartService.getData();
-    const electionDay = new Date("2020-11-15T00:00:00");
+    const { election, candidates, data } = chartService.getData();
     const size = [width, 500];
     const resizeLimit = 800;
-    const canUseDateAsXAxis = !isIOS();
+    const useDateAxis = !isIOS();
 
     const formatDate = (daysToElection) => {
-        const d = new Date(electionDay);
+        const d = new Date(election.date);
         d.setDate(d.getDate() + daysToElection);
         return d.toLocaleDateString();
     };
@@ -30,10 +29,10 @@ export const RechartLineChart = ({ width }) => {
             stroke="#ddd" 
             strokeDasharray="2 2" />
         <XAxis 
-            type={canUseDateAsXAxis ? "number" : "category"}
+            type={useDateAxis ? "number" : "category"}
             dataKey="daysToElection"
             tickFormatter={formatDate}
-            domain={canUseDateAsXAxis ? [-30,0] : null}
+            domain={useDateAxis ? [-30,0] : null}
             />
         <YAxis 
             domain={[0, 35]} />
