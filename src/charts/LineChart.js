@@ -6,7 +6,7 @@ import { isIOS } from '../utils/platformUtils';
 export const RechartLineChart = ({ width }) => {
     const chartService = new ChartService();
     const { data, candidates } = chartService.getData();
-    const electionDay = new Date("2020-11-15 00:00:00");
+    const electionDay = new Date("2020-11-15T00:00:00");
     const size = [width, 500];
     const resizeLimit = 800;
     const canUseDateAsXAxis = !isIOS();

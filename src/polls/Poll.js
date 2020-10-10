@@ -7,12 +7,12 @@ export default class Poll {
     }
 
     get timestamp() {
-        return new Date(this.date + " 00:00:00").getTime();
+        return new Date(this.date + "T00:00:00").getTime();
     }
 
     get daysToElection() {
-        const electionDay = new Date("2020-11-15 00:00:00");
-        const diff = new Date(this.date + " 00:00:00") - electionDay;
+        const electionDay = new Date("2020-11-15T00:00:00");
+        const diff = new Date(this.date + "T00:00:00") - electionDay;
         return Math.ceil(diff / (1000 * 60 * 60 * 24));
     }
 
