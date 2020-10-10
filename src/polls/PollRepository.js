@@ -8,17 +8,19 @@ class PollRepository {
 
     getLastPoll = () => this.polls[this.polls.length - 1];
 
-    getPollsData() {
-        return this.polls.map(poll => {
-            var pollData = { date: poll.timestamp, name: poll.institute, institute: poll.institute };
+    getPollsData = () => this.polls.map(poll => {
+        var pollData = { 
+            date: poll.timestamp, 
+            name: poll.institute, 
+            institute: poll.institute 
+        };
 
-            for (var { candidateId, value } of poll.results) {
-                pollData[candidateId] = value;
-            }
+        for (var { candidateId, value } of poll.results) {
+            pollData[candidateId] = value;
+        }
 
-            return pollData;
-        });
-    }
+        return pollData;
+    });
 }
 
 export default PollRepository;
