@@ -1,15 +1,21 @@
 import React from 'react';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import ChartService from './ChartService';
+import { isIOS } from '../utils/platformUtils';
 
 export const RechartLineChart = ({ width }) => {
     const chartService = new ChartService();
     const { data, candidates } = chartService.getData();
-    const electionRaceDomain = [new Date("2020-09-20 00:00:00"), new Date("2020-11-15 00:00:00")];
+    const electionDay = new Date("2020-11-15 00:00:00");
     const size = [width, 500];
     const resizeLimit = 800;
+    const canUseDateAsXAxis = !isIOS();
 
-    const formatDate = (timestamp) => new Date(timestamp).toLocaleDateString();
+    const formatDate = (daysToElection) => {
+        const d = new Date(electionDay);
+        d.setDate(d.getDate() + daysToElection);
+        return d.toLocaleDateString();
+    };
 
     return <LineChart data={data} width={size[0]} height={size[1]} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => <Line 
@@ -24,14 +30,15 @@ export const RechartLineChart = ({ width }) => {
             stroke="#ddd" 
             strokeDasharray="2 2" />
         <XAxis 
-            type="category" 
-            dataKey="date"
+            type={canUseDateAsXAxis ? "number" : "category"}
+            dataKey="daysToElection"
             tickFormatter={formatDate}
-            domain={electionRaceDomain.map(d => d.getTime())} />
+            domain={canUseDateAsXAxis ? [-30,0] : null}
+            />
         <YAxis 
             domain={[0, 35]} />
         <Tooltip
-            labelFormatter={ts => new Date(ts).toLocaleDateString()}
+            labelFormatter={daysToElection => formatDate(daysToElection)}
             formatter={p => `${p}%`}/>
         <Legend 
             align={width < resizeLimit ? "left" : "right"}
