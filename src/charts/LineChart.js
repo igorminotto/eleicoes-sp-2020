@@ -9,7 +9,7 @@ export const RechartLineChart = () => {
 
     const formatDate = (timestamp) => new Date(timestamp).toLocaleDateString();
 
-    return <ResponsiveContainer width="100%" height={800} >
+    return <ResponsiveContainer width="100%" height={500} >
         <LineChart data={data} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
             {candidates.map(candidate => <Line 
                 type="linear" 
@@ -17,7 +17,8 @@ export const RechartLineChart = () => {
                 dataKey={candidate.id} 
                 name={candidate.description} 
                 stroke={candidate.color}
-                dot={{ stroke: candidate.color, strokeWidth: 1 }} />)}
+                strokeWidth={3}
+                dot={{ stroke: candidate.color, strokeWidth: 2 }} />)}
             <CartesianGrid 
                 stroke="#ddd" 
                 strokeDasharray="2 2" />
@@ -32,11 +33,11 @@ export const RechartLineChart = () => {
                 labelFormatter={ts => new Date(ts).toLocaleDateString()}
                 formatter={p => `${p}%`}/>
             <Legend 
-                align='left' 
-                verticalAlign='bottom' 
+                align="right"
+                verticalAlign="top"
                 iconType="circle"
-                width={230}
-                wrapperStyle={{ position: "absolute", right: "50px" }} />
+                wrapperStyle={{ paddingLeft: 20 }}
+                layout="vertical" />
         </LineChart>
     </ResponsiveContainer>
 };

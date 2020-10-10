@@ -10,10 +10,8 @@ export default class CandidateRepository {
 
     getCandidate = (id) => this.candidates.find(c => c.id === id);
 
-    sortCandidatesByPollResults(poll) {
-        var candidates = this.candidates;
-
-        candidates.sort((a, b) => {
+    sortCandidatesByPollResults = (poll) => this.candidates
+        .sort((a, b) => {
             switch(a.name) {
                 case "Indecisos":
                     return 100;
@@ -23,7 +21,4 @@ export default class CandidateRepository {
                     return poll.getResultOfCandidate(b.id) - poll.getResultOfCandidate(a.id);
             }
         });
-
-        return candidates;
-    }
 }
