@@ -10,7 +10,7 @@ class PollRepository {
 
     getPollsData = () => this.polls.map(poll => {
         var pollData = { 
-            date: poll.timestamp, 
+            daysToElection: poll.daysToElection, 
             name: poll.institute, 
             institute: poll.institute 
         };
