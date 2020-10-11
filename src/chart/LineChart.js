@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import ChartService from './ChartService';
 import { isIOS } from '../utils/platformUtils';
@@ -9,19 +9,18 @@ export const RechartLineChart = ({ width, height = 500 }) => {
     const isSmallChart = width < 800;
     const useDateAxis = !isIOS() && !isSmallChart;
 
-    const [activeCandidates, setActiveCandidates] = useState(candidates.map(c => c.id));
-
-    const isCandidateActive = useCallback((candidateId) => {
+    const isCandidateActive = (candidateId, activeCandidates) => {
         return activeCandidates.indexOf(candidateId) > -1;
-    }, [activeCandidates]);
+    };
 
-    const generateLegendPayload = useCallback(() => candidates.map(c => ({
+    const generateLegendPayload = (candidates, activeCandidates) => candidates.map(c => ({
         value: c.description,
         id: c.id,
-        color: isCandidateActive(c.id) ? c.color : "#EEE"
-    })), [candidates, isCandidateActive]);
+        color: isCandidateActive(c.id, activeCandidates) ? c.color : "#EEE"
+    }));
 
-    const [legendPayload, setLegendPayload] = useState(generateLegendPayload());
+    const [activeCandidates, setActiveCandidates] = useState(candidates.map(c => c.id));
+    const [legendPayload, setLegendPayload] = useState(generateLegendPayload(candidates, activeCandidates));
 
     const formatDate = (daysToElection) => {
         const d = new Date(election.date);
@@ -62,9 +61,8 @@ export const RechartLineChart = ({ width, height = 500 }) => {
             activeCandidates.push(candidateId);
 
         setActiveCandidates([...activeCandidates]);
+        setLegendPayload(generateLegendPayload(candidates, activeCandidates));
     }
-
-    useEffect(() => setLegendPayload(generateLegendPayload()), [activeCandidates, generateLegendPayload]);
 
     return <LineChart data={pollsData} width={width} height={height} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => candidateLine(candidate))}
