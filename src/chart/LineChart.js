@@ -15,6 +15,16 @@ export const RechartLineChart = ({ width, height = 500 }) => {
         return d.toLocaleDateString();
     };
 
+    const formatTick = (daysToElection) => {
+        return formatDate(daysToElection) + (daysToElection ? "" : " (1º Turno)");
+    };
+
+    const formatTooltipLabel = (daysToElection) => {
+        var poll = pollsData.find(p => p.daysToElection === daysToElection);
+        var date = formatDate(daysToElection);
+        return `${poll.name} em ${date}`;
+    }
+
     return <LineChart data={pollsData} width={width} height={height} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => <Line 
             type="linear" 
@@ -22,24 +32,21 @@ export const RechartLineChart = ({ width, height = 500 }) => {
             dataKey={candidate.id} 
             name={candidate.description} 
             stroke={candidate.color}
-            strokeWidth={3}
+            strokeWidth={4}
             dot={{ stroke: candidate.color, strokeWidth: 2 }} />)}
         <CartesianGrid 
-            stroke="#ddd" 
+            stroke="#ddd"
             strokeDasharray="2 2" />
         <XAxis 
             type={useDateAxis ? "number" : "category"}
             dataKey="daysToElection"
-            tickFormatter={formatDate}
-            domain={useDateAxis ? [-30,0] : null}
-            />
+            tickFormatter={formatTick}
+            domain={useDateAxis ? [-30,0] : null} />
         <YAxis 
             domain={[0, 35]} />
         <Tooltip
-            labelFormatter={daysToElection => formatDate(daysToElection) 
-                + " | " 
-                + pollsData.find(p => p.daysToElection === daysToElection).name}
-            formatter={value => `${value}%`}/>
+            labelFormatter={daysToElection => formatTooltipLabel(daysToElection)}
+            formatter={value => `${value}%`} />
         <Legend 
             align={isSmallChart ? "left" : "right"}
             verticalAlign={isSmallChart ? "bottom" : "top"}
