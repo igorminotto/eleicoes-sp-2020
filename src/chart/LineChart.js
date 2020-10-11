@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import ChartService from './ChartService';
 import { isIOS } from '../utils/platformUtils';
@@ -9,17 +9,18 @@ export const RechartLineChart = ({ width, height = 500 }) => {
     const isSmallChart = width < 800;
     const useDateAxis = !isIOS() && !isSmallChart;
 
-    const isCandidateActive = (candidateId) => {
-        return activeCandidates.indexOf(candidateId) > -1;
-    }
+    const [activeCandidates, setActiveCandidates] = useState(candidates.map(c => c.id));
 
-    const generateLegendPayload = () => candidates.map(c => ({
+    const isCandidateActive = useCallback((candidateId) => {
+        return activeCandidates.indexOf(candidateId) > -1;
+    }, [activeCandidates]);
+
+    const generateLegendPayload = useCallback(() => candidates.map(c => ({
         value: c.description,
         id: c.id,
         color: isCandidateActive(c.id) ? c.color : "#EEE"
-    }))
+    })), [candidates, isCandidateActive]);
 
-    const [activeCandidates, setActiveCandidates] = useState(candidates.map(c => c.id));
     const [legendPayload, setLegendPayload] = useState(generateLegendPayload());
 
     const formatDate = (daysToElection) => {
@@ -63,7 +64,7 @@ export const RechartLineChart = ({ width, height = 500 }) => {
         setActiveCandidates([...activeCandidates]);
     }
 
-    useEffect(() => setLegendPayload(generateLegendPayload()), [activeCandidates]);
+    useEffect(() => setLegendPayload(generateLegendPayload()), [activeCandidates, generateLegendPayload]);
 
     return <LineChart data={pollsData} width={width} height={height} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => candidateLine(candidate))}
