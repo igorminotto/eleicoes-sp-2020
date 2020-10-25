@@ -1,21 +1,20 @@
 import CandidateRepository from "../candidate/CandidateRepository"
-import Election from "../election/Election";
+import Election from "./Election";
 import PollRepository from "../poll/PollRepository";
 
-export default class ChartService {
+export default class ElectionService {
     constructor() {
         this.candidateRepository = new CandidateRepository();
         this.pollRepository = new PollRepository();
     }
 
-    getData() {
+    getElection() {
         var election = Election.getDefault();
         var lastPoll = this.pollRepository.getLastPoll();
 
-        return {
-            election,
-            candidates: this.candidateRepository.sortCandidatesByPollResults(lastPoll),
-            pollsData: this.pollRepository.getPollsData(election)
-        };
+        election.candidates = this.candidateRepository.sortCandidatesByPollResults(lastPoll);
+        election.pollsData = this.pollRepository.getPollsData(election);
+
+        return election;
     }
 }

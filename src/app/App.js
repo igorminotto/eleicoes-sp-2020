@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { RechartLineChart } from '../chart/LineChart';
+import { ElectionChart } from '../chart/ElectionChart';
 import Container from '../components/Container';
 import Footer from './Footer';
 
@@ -15,7 +15,7 @@ const App = () => {
   return <div className="App">
     <Container ref={containerRef}>
       <h1 className="margin-bottom">Eleições São Paulo 2020</h1>
-      <RechartLineChart width={width}/>
+      <ElectionChart width={width}/>
     </Container>
     <Footer />
   </div>;

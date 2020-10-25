@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
-import ChartService from './ChartService';
+import { CartesianGrid, Legend, Line, LineChart as RechartLineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import { isIOS } from '../utils/platformUtils';
 
-export const RechartLineChart = ({ width, height = 500 }) => {
-    const chartService = new ChartService();
-    const { election, candidates, pollsData } = chartService.getData();
+export const LineChart = ({ election, selectedInstitutes, width, height = 500 }) => {
+    const { candidates, pollsData } = election;
     const isSmallChart = width < 800;
     const useDateAxis = !isIOS() && !isSmallChart;
 
@@ -35,7 +33,7 @@ export const RechartLineChart = ({ width, height = 500 }) => {
     const formatTooltipLabel = (daysToElection) => {
         var poll = pollsData.find(p => p.daysToElection === daysToElection);
         var date = formatDate(daysToElection);
-        return `${poll.name} em ${date}`;
+        return `${poll.institute} em ${date}`;
     }
 
     const candidateLine = (candidate) => {
@@ -64,7 +62,11 @@ export const RechartLineChart = ({ width, height = 500 }) => {
         setLegendPayload(generateLegendPayload(candidates, activeCandidates));
     }
 
-    return <LineChart data={pollsData} width={width} height={height} margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
+    return <RechartLineChart 
+            data={pollsData.filter(pd => selectedInstitutes.indexOf(pd.institute) !== -1)} 
+            width={width} 
+            height={height} 
+            margin={{ top: 5, right: 60, bottom: 5, left: 0 }}>
         {candidates.map(candidate => candidateLine(candidate))}
         <CartesianGrid 
             stroke="#ddd"
@@ -87,5 +89,5 @@ export const RechartLineChart = ({ width, height = 500 }) => {
             iconType="circle"
             wrapperStyle={{ paddingLeft: 20 }}
             onClick={item => console.log(item) || toggleCandidate(item.id)}/>
-    </LineChart>;
+    </RechartLineChart>;
 };
