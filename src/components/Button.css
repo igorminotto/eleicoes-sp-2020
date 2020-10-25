@@ -1,0 +1,25 @@
+.button {
+    display: inline-block;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 10px 32px 12px;
+}
+
+.button.selected {
+    background-color: white;
+    border: thin solid #DDD;
+}
+
+.button.selected:hover {
+    background-color: #fafafa;
+}
+
+.button:not(.selected) {
+    background-color: #DDD;
+    border: thin solid #DDD;
+    color: #666;
+}
+
+.button:not(.selected):hover {
+    background-color: #d6d6d6;
+}
